@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in · Switching Academy</title>
+<link rel="icon" type="image/jpeg" href="/favicon.jpg">
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#eef0ff;--card:#fff;--text:#1b1840;--muted:#5b5f86;--line:#d6d9f5;--accent:#6c4cf5;--at:#fff;--ok:#0f9d6b;--bad:#d63a5a;--soft:#ebe7ff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0b24;--card:#19153a;--text:#eceaff;--muted:#aaa6d6;--line:#322c66;--accent:#9b8cff;--at:#120d33;--ok:#4fe3a8;--bad:#ff7a93;--soft:#262052;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;color:var(--text);font:1rem/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 8% 0%,rgba(108,76,245,.28),transparent 42%),radial-gradient(circle at 96% 18%,rgba(45,183,245,.26),transparent 42%),radial-gradient(circle at 50% 100%,rgba(34,211,166,.22),transparent 46%),var(--bg);background-attachment:fixed}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 48px;display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:900px){.wrap{grid-template-columns:1.05fr .95fr;align-items:start;padding-top:40px}}
+.hero{position:relative;border-radius:22px;overflow:hidden;color:#fff;padding:26px 24px;background:linear-gradient(180deg,rgba(8,6,32,.45),rgba(8,6,32,.85)),url("/hero.jpg") center/cover no-repeat,#0e0b24;border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 28px rgba(80,60,200,.3)}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:96px;height:96px;flex:none;-webkit-mask-image:radial-gradient(circle,#000 62%,transparent 71%);mask-image:radial-gradient(circle,#000 62%,transparent 71%);mix-blend-mode:screen}
+.brand h1{margin:0;font-size:1.9rem;letter-spacing:-.01em}
+.brand p{margin:4px 0 0;color:rgba(255,255,255,.9)}
+.notice{margin-top:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:16px 18px;backdrop-filter:blur(4px)}
+.notice h2{margin:0 0 6px;font-size:1.15rem}
+.notice p{margin:8px 0;color:rgba(255,255,255,.93)}
+.notice b{color:#fff}
+.panel{background:var(--card);border-radius:20px;padding:24px 22px;box-shadow:0 10px 28px rgba(80,60,200,.16)}
+.panel h2{margin:0 0 4px;font-size:1.35rem}
+.panel .sub{margin:0 0 16px;color:var(--muted)}
+label{display:block;font-weight:700;font-size:.92rem;margin:12px 0 4px}
+label .opt{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:76px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);border-color:var(--accent)}
+button{font:inherit;font-weight:700;cursor:pointer;border-radius:10px}
+.primary{width:100%;margin-top:16px;padding:12px 16px;border:0;color:#fff;background:linear-gradient(135deg,#6c4cf5,#2db7f5);box-shadow:0 4px 12px rgba(80,60,200,.3)}
+.primary:hover{filter:brightness(1.07)}
+.primary:disabled{opacity:.6;cursor:default}
+.link{background:none;border:0;color:var(--accent);padding:4px 0;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.newbox{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.newbox span{color:var(--muted)}
+.ghost{padding:10px 16px;border:1px solid var(--line);background:var(--soft);color:var(--text)}
+.msg{margin:12px 0 0;padding:10px 12px;border-radius:10px;font-size:.95rem}
+.msg:empty{display:none}
+.msg.bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+.msg.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.msg.info{background:var(--soft);color:var(--text)}
+.note{font-size:.88rem;color:var(--muted);margin:12px 0 0}
+.trap{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+[hidden]{display:none!important}
+.foot{grid-column:1/-1;text-align:center;color:var(--muted);font-size:.88rem}
+.foot a{color:var(--accent);font-weight:700}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.notice details summary{cursor:pointer;font-weight:700;color:#fff;margin:6px 0}
+.notice details[open] summary{margin-bottom:4px}
+@media (max-width:600px){.hero{padding:18px 16px}.brand img{width:64px;height:64px}.brand h1{font-size:1.45rem}.brand p{font-size:.92rem}.notice{margin-top:14px;padding:12px 14px}.wrap{padding-top:14px;gap:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero" aria-labelledby="ttl">
+    <div class="brand">
+      <img src="/logo.jpg" alt="Switching Academy logo">
+      <div><h1 id="ttl">Switching Academy</h1><p>Learn how network switches work, then practice on a pretend one.</p></div>
+    </div>
+    <div class="notice" role="note">
+      <h2>📢 Switching Academy now uses accounts</h2>
+      <p>More and more students, families and classrooms are using Switching Academy, so we've added sign-in accounts. Accounts help keep the site running smoothly and keep it safe for young learners.</p>
+      <p><b>Switching Academy is still free.</b> The lessons, labs and badges haven't changed.</p>
+      <details id="more">
+        <summary>More about this change</summary>
+      <p><b>New here?</b> Tap <b>Request access</b>. We'll review your request and email you an invitation with a link to set your password.</p>
+      <p><b>Your progress now follows you.</b> Once you sign in, your progress is saved to your account, so it shows up on any computer, tablet or phone. If this browser already has progress saved from before, we'll ask whether to add it to your account. Progress codes and backup files still work too.</p>
+      <p>Questions? Message us on our <a href="https://www.facebook.com/profile.php?id=61595712630908" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700">Facebook page<span class="vh"> (opens in a new tab)</span></a>.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="panel" aria-live="polite">
+    <!-- Sign in -->
+    <form id="fLogin" novalidate>
+      <h2>Sign in</h2>
+      <p class="sub">Use the email and password from your invitation.</p>
+      <div id="loginMsg" class="msg"></div>
+      <label for="lEmail">Email</label>
+      <input id="lEmail" type="email" autocomplete="username" required>
+      <label for="lPw">Password</label>
+      <input id="lPw" type="password" autocomplete="current-password" required>
+      <button class="primary" type="submit">Sign in</button>
+      <div class="row"><button type="button" class="link" data-show="fForgot">Forgot your password?</button></div>
+      <div class="newbox"><span>New to Switching Academy?</span><button type="button" class="ghost" data-show="fRequest">Request access</button></div>
+    </form>
+
+    <!-- Request access -->
+    <form id="fRequest" novalidate hidden>
+      <h2>Request access</h2>
+      <p class="sub">Tell us a little about you. We'll email an invitation once your request is approved.</p>
+      <div id="reqMsg" class="msg"></div>
+      <label for="rName">Your name</label>
+      <input id="rName" autocomplete="name" maxlength="100" required>
+      <label for="rEmail">Email</label>
+      <input id="rEmail" type="email" autocomplete="email" maxlength="200" required>
+      <label for="rRole">I am a</label>
+      <select id="rRole"><option>Student</option><option>Parent or guardian</option><option>Teacher</option><option>Other</option></select>
+      <label for="rSchool">School, class or group <span class="opt">(optional)</span></label>
+      <input id="rSchool" maxlength="120">
+      <label for="rMsg">Anything else? <span class="opt">(optional)</span></label>
+      <textarea id="rMsg" maxlength="500"></textarea>
+      <div class="trap" aria-hidden="true"><label for="rSite">Website</label><input id="rSite" tabindex="-1" autocomplete="off"></div>
+      <p class="note">If you're under 13, ask a parent, guardian or teacher to help you send this request.</p>
+      <button class="primary" type="submit">Send request</button>
+      <div class="row"><button type="button" class="link" data-show="fLogin">← Back to sign in</button></div>
+    </form>
+
+    <!-- Request sent -->
+    <div id="reqDone" hidden>
+      <h2>Request sent ✅</h2>
+      <p class="sub">Thanks! We'll review it and send an invitation to <b id="reqDoneEmail"></b>. The email comes from Netlify, so check your spam folder if you don't see it.</p>
+      <button type="button" class="ghost" data-show="fLogin">Back to sign in</button>
+    </div>
+
+    <!-- Forgot password -->
+    <form id="fForgot" novalidate hidden>
+      <h2>Reset your password</h2>
+      <p class="sub">Enter your email and we'll send you a link to choose a new password.</p>
+      <div id="fgMsg" class="msg"></div>
+      <label for="fEmail">Email</label>
+      <input id="fEmail" type="email" autocomplete="email" required>
+      <button class="primary" type="submit">Send reset link</button>
+      <div class="row"><button type="button" class="link" data-show="fLogin">← Back to sign in</button></div>
+    </form>
+
+    <!-- Choose a password (invitation or reset link) -->
+    <form id="fSetPw" novalidate hidden>
+      <h2 id="spTitle">Choose a password</h2>
+      <p class="sub" id="spSub">At least 8 characters.</p>
+      <div id="spMsg" class="msg"></div>
+      <label for="sPw">New password</label>
+      <input id="sPw" type="password" autocomplete="new-password" minlength="8" required>
+      <label for="sPw2">Type it again</label>
+      <input id="sPw2" type="password" autocomplete="new-password" minlength="8" required>
+      <button class="primary" type="submit">Save password and continue</button>
+    </form>
+
+    <div id="busy" hidden><h2>Signing you in…</h2><p class="sub">One moment.</p></div>
+  </section>
+
+  <p class="foot">Switching Academy · Free to use · <a href="https://www.facebook.com/profile.php?id=61595712630908" target="_blank" rel="noopener noreferrer">Follow for updates<span class="vh"> (opens in a new tab)</span></a></p>
+</div>
+
+<!-- Netlify Forms reads this hidden form when the site is deployed, so it can email the owner about each new request. -->
+<form name="access-request" data-netlify="true" netlify-honeypot="website" hidden>
+  <input name="name"><input name="email"><input name="role"><input name="school"><textarea name="message"></textarea><input name="website">
+</form>
+
+<script src="/sa-auth.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var views = ["fLogin", "fRequest", "reqDone", "fForgot", "fSetPw", "busy"];
+  function show(id) {
+    views.forEach(function (v) { $(v).hidden = v !== id; });
+    var f = $(id).querySelector("input:not([tabindex='-1'])");
+    if (f && id !== "busy") setTimeout(function () { f.focus(); }, 30);
+  }
+  function msg(id, text, cls) { var m = $(id); m.textContent = text || ""; m.className = "msg" + (text ? " " + (cls || "bad") : ""); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-show]");
+    if (!b) return;
+    if (b.dataset.show === "fForgot" && $("lEmail").value) $("fEmail").value = $("lEmail").value;
+    if (b.dataset.show === "fRequest" && $("lEmail").value && !$("rEmail").value) $("rEmail").value = $("lEmail").value;
+    show(b.dataset.show);
+  });
+
+  var qs = new URLSearchParams(location.search);
+  var next = qs.get("next") || "/";
+  if (!/^\/(?!\/)/.test(next) || /^\/login/.test(next)) next = "/";
+  var why = qs.get("why") || "";
+  var WHY = {
+    locked: "Your access to Switching Academy is paused. If you think this is a mistake, message us on our Facebook page.",
+    removed: "This account no longer has access to Switching Academy. You can send a new request below.",
+  };
+
+  // Ask the site whether this sign-in may come in, then go to the page they wanted.
+  async function enter() {
+    var tok = await SAAuth.token();
+    var r = await fetch("/.netlify/functions/session", { headers: { Authorization: "Bearer " + tok } });
+    if (r.status === 403) {
+      var j = {}; try { j = await r.json(); } catch (e) {}
+      SAAuth.clear();
+      show("fLogin"); msg("loginMsg", WHY[j.reason] || WHY.locked); return;
+    }
+    if (!r.ok) throw new Error(r.status === 401 ? "Your sign-in didn't work. Please try again." : "We couldn't reach Switching Academy. Check your connection and try again.");
+    location.replace(next);
+  }
+
+  $("fLogin").onsubmit = async function (e) {
+    e.preventDefault(); msg("loginMsg", "");
+    var email = $("lEmail").value.trim(), pw = $("lPw").value;
+    if (!email || !pw) { msg("loginMsg", "Enter your email and password."); return; }
+    var btn = this.querySelector("button[type=submit]"); btn.disabled = true;
+    try { await SAAuth.login(email, pw); await enter(); }
+    catch (err) {
+      msg("loginMsg", err.status === 400 || err.status === 401 ? "That email and password don't match. Check them, or use Forgot your password?" : (err.message || "Something went wrong. Please try again."));
+    } finally { btn.disabled = false; }
+  };
+
+  $("fRequest").onsubmit = async function (e) {
+    e.preventDefault(); msg("reqMsg", "");
+    var body = { name: $("rName").value.trim(), email: $("rEmail").value.trim(), role: $("rRole").value,
+                 school: $("rSchool").value.trim(), message: $("rMsg").value.trim(), website: $("rSite").value };
+    if (!body.name) { msg("reqMsg", "Please enter your name."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) { msg("reqMsg", "Please enter a valid email address."); return; }
+    var btn = this.querySelector("button[type=submit]"); btn.disabled = true;
+    try {
+      var r = await fetch("/.netlify/functions/request-invite", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      var j = {}; try { j = await r.json(); } catch (x) {}
+      if (!r.ok) throw new Error(j.error || "We couldn't send your request. Please try again.");
+      // Also send it to Netlify Forms, which emails the owner. The request is already saved, so a failure here doesn't matter.
+      if (!body.website) {
+        var fd = new URLSearchParams({ "form-name": "access-request", name: body.name, email: body.email, role: body.role, school: body.school, message: body.message });
+        try { await fetch("/login.html", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: fd.toString() }); } catch (x) {}
+      }
+      $("reqDoneEmail").textContent = body.email; show("reqDone");
+    } catch (err) { msg("reqMsg", err.message); }
+    finally { btn.disabled = false; }
+  };
+
+  $("fForgot").onsubmit = async function (e) {
+    e.preventDefault(); msg("fgMsg", "");
+    var email = $("fEmail").value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg("fgMsg", "Please enter a valid email address."); return; }
+    var btn = this.querySelector("button[type=submit]"); btn.disabled = true;
+    try { await SAAuth.recover(email); msg("fgMsg", "If that email has an account, a reset link is on its way. Check your spam folder too.", "ok"); }
+    catch (err) { msg("fgMsg", "We couldn't send the link just now. Please try again in a minute."); }
+    finally { btn.disabled = false; }
+  };
+
+  var spType = "", spToken = "";
+  $("fSetPw").onsubmit = async function (e) {
+    e.preventDefault(); msg("spMsg", "");
+    var a = $("sPw").value, b = $("sPw2").value;
+    if (a.length < 8) { msg("spMsg", "Use at least 8 characters."); return; }
+    if (a !== b) { msg("spMsg", "The two passwords don't match."); return; }
+    var btn = this.querySelector("button[type=submit]"); btn.disabled = true;
+    try { await SAAuth.verify(spType, spToken, a); show("busy"); await enter(); }
+    catch (err) {
+      show("fLogin");
+      msg("loginMsg", spType === "signup" ? "That invitation link has expired or was already used. Try signing in, or request access again." : "That reset link has expired or was already used. Ask for a new one.");
+    } finally { btn.disabled = false; }
+  };
+
+  // Links from Netlify's emails arrive with a token after the # sign.
+  var h = new URLSearchParams(location.hash.slice(1));
+  var invite = h.get("invite_token"), recovery = h.get("recovery_token"), confirm = h.get("confirmation_token");
+  if (invite || recovery || confirm) try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+
+  if (window.matchMedia && matchMedia("(min-width:900px)").matches) $("more").open = true;
+
+  (async function start() {
+    if (invite) { spType = "signup"; spToken = invite; $("spTitle").textContent = "Welcome! Choose a password"; $("spSub").textContent = "This is the password you'll use to sign in to Switching Academy. At least 8 characters."; show("fSetPw"); return; }
+    if (recovery) { spType = "recovery"; spToken = recovery; $("spTitle").textContent = "Choose a new password"; show("fSetPw"); return; }
+    if (confirm) {
+      show("busy");
+      try { await SAAuth.verify("signup", confirm); await enter(); }
+      catch (e) { show("fLogin"); msg("loginMsg", "That link has expired or was already used. Try signing in."); }
+      return;
+    }
+    if (WHY[why]) { SAAuth.clear(); show("fLogin"); msg("loginMsg", WHY[why]); return; }
+    if (SAAuth.get()) {
+      show("busy");
+      try { await enter(); return; } catch (e) { SAAuth.clear(); }
+    }
+    show("fLogin");
+    if (why === "expired") msg("loginMsg", "Please sign in again.", "info");
+  })();
+})();
+</script>
+</body>
+</html>
